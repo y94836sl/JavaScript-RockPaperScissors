@@ -112,11 +112,11 @@ function game(){
         
     }
     if ((win > lose)||((win > lose) && (win >= draw))) {
-        alert("Congratulations! You win!");
+        alert("Final Result: Congratulations! You win!");
     }else if ((win == lose)||(lose==draw)) {
-        alert("Draw");
+        alert("Final Result: Draw!");
     }else{
-        alert("Sorry! You lose");
+        alert("Final Result: Sorry! You lose!");
     }
 }
 
