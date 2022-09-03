@@ -92,6 +92,7 @@ function game(){
         let computerSelection = computerPlay();
         if (playerSelection == null) {
             let playerSelection = playerPlay();
+            let computerSelection = computerPlay();
         }else {
             switch (playerSelection) {
                 case "win":
