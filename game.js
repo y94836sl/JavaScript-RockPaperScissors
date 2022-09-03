@@ -18,15 +18,19 @@ function playRound(playerSelection, computerSelection){
     case "rock":
         switch(playerInput){
             case "rock":
-                return("Draw, you both choose rock!");
+                alert("Draw, you both choose rock!");
+                return "draw";
                 break;
             case "paper":
-                return("You win, paper beats rock!");
+                alert("You win, paper beats rock!");
+                return "win";
                 break;
             case "scissors":
-                return("You lose, rock beats seissors!");
+                alert("You lose, rock beats scissors!");
+                return "lose";
                 break;
             default:
+                alert("Please enter a valid input: Rock/Paper/Scissors!");
                 return null;
                 break;
         }
@@ -34,15 +38,19 @@ function playRound(playerSelection, computerSelection){
     case "paper":
         switch(playerInput){
             case "rock":
-                return("You lose, paper beats rock!");
+                alert("You lose, paper beats rock!");
+                return "lose";
                 break;
             case "paper":
-                return("Draw, you both choose paper!");
+                alert("Draw, you both choose paper!");
+                return "draw";
                 break;
             case "scissors":
-                return("You win, seissors beats paper!");
+                alert("You win, scissors beats paper!");
+                return "win";
                 break;
             default:
+                alert("Please enter a valid input: Rock/Paper/Scissors!");
                 return null;
                 break;
         }
@@ -50,21 +58,25 @@ function playRound(playerSelection, computerSelection){
     case "scissors":
         switch(playerInput){
             case "rock":
-                return("You win, rock beats seissors!");
+                alert("You win, rock beats scissors!");
+                return "win";
                 break;
             case "paper":
-                return("You lose, seissors beats paper!");
+                alert("You lose, scissors beats paper!");
+                return "lose";
                 break;
             case "scissors":
-                return("Draw, you both choose seissors!");
+                alert("Draw, you both choose scissors!");
+                return "draw";
                 break;
             default:
+                alert("Please enter a valid input: Rock/Paper/Scissors!");
                 return null;
                 break;
         }
         break;
     default:
-        return null;
+        break;
    }
    
 }
@@ -74,10 +86,35 @@ function playRound(playerSelection, computerSelection){
 // console.log(playRound(playerSelection, computerSelection));
 
 function game(){
+    let win = 0, lose = 0, draw = 0;
     for (let i = 0; i <= 5; i++){
         let playerSelection = playerPlay();
         let computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection)); 
+        if (playerSelection == null) {
+            let playerSelection = playerPlay();
+        }else {
+            switch (playerSelection) {
+                case "win":
+                    win++;
+                    break;
+                case "lose":
+                    lose++;
+                    break;
+                case "draw":
+                    draw++;
+                    break;
+                default:
+                    break;
+            }
+        }
+        playRound(playerSelection, computerSelection);
+    }
+    if ((win > lose)||((win > lose) && (win >= draw))) {
+        alert("Congratulations! You win!");
+    }else if ((win == lose)||(lose==draw)) {
+        alert("Draw");
+    }else{
+        alert("Sorry! You lose");
     }
 }
 
