@@ -9,6 +9,7 @@ function playerPlay(){
     let playerChoice = prompt("Please choose from Rock/Paper/Scissors: ");
     let playerInput = playerChoice.toLowerCase();
     return playerInput;
+    
 }
 
 function playRound(playerSelection, computerSelection){
@@ -90,11 +91,11 @@ function game(){
     for (let i = 0; i <= 5; i++){
         let playerSelection = playerPlay();
         let computerSelection = computerPlay();
-        if (playerSelection == null) {
-            let playerSelection = playerPlay();
-            let computerSelection = computerPlay();
+        let result = playRound(playerSelection, computerSelection);
+        if (result == null) {
+            i--;
         }else {
-            switch (playerSelection) {
+            switch (result) {
                 case "win":
                     win++;
                     break;
@@ -108,7 +109,7 @@ function game(){
                     break;
             }
         }
-        playRound(playerSelection, computerSelection);
+        
     }
     if ((win > lose)||((win > lose) && (win >= draw))) {
         alert("Congratulations! You win!");
